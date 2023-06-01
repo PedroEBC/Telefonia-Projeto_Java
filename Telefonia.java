@@ -100,10 +100,62 @@ public class Telefonia {
     	        
     		
     	}
-    	
+    	public void fazerChamada() {
+
+
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("\nDigite o tipo de assinante \n1 - Pré-pago  \n2 - Pós-pago:");
+         int tipoAssinante = scanner.nextInt();
+
+         System.out.println("Digite o CPF do assinante:");
+         long cpf = scanner.nextLong();
+
+         if (tipoAssinante == 1) {
+             PrePago assinante = localizarPrePago(cpf);
+             if (assinante != null) {
+                 System.out.println("Digite a duração da chamada:");
+                 int duracao = scanner.nextInt();
+
+                 System.out.println("\nDigite a data da chamada (formato: dia/mês/ano):");
+                 String dataStr = scanner.next();
+
+                 int dia = Integer.parseInt(dataStr.substring(0, 2));
+                 int mes = Integer.parseInt(dataStr.substring(3, 5));
+                 int ano = Integer.parseInt(dataStr.substring(6));
+
+                 GregorianCalendar data = new GregorianCalendar(ano, mes - 1, dia);
+                 assinante.fazerChamada(data, duracao);
+             } else {
+                 System.out.println("\nAssinante pré-pago não encontrado.");
+             }
+         } else if (tipoAssinante == 2) {
+             PosPago assinante = localizarPosPago(cpf);
+             if (assinante != null) {
+                 System.out.println("Digite a duração da chamada:");
+                 int duracao = scanner.nextInt();
+
+                 System.out.println("Digite a data da chamada (formato: dia/mês/ano):");
+                 String dataStr = scanner.next();
+
+                 int dia = Integer.parseInt(dataStr.substring(0, 2));
+                 int mes = Integer.parseInt(dataStr.substring(3, 5));
+                 int ano = Integer.parseInt(dataStr.substring(6));
+
+
+                 GregorianCalendar data = new GregorianCalendar(ano, mes - 1, dia);
+
+                 assinante.fazerChamada(data, duracao);
+             } else {
+                 System.out.println("\nAssinante pós-pago não encontrado.");
+             }
+         } else {
+             System.out.println("\nOpção inválida. Tipo de assinante não reconhecido.");
+         }
+
+      }
        
     	
-    }
+    
     
     
     
