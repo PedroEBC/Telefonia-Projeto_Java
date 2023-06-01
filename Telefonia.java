@@ -1,3 +1,5 @@
+import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.Scanner;
 
 
@@ -13,8 +15,7 @@ public class Telefonia {
         posPago = new PosPago[3];
     }
     
-    
-    
+      
     public void cadastrarAssinante() {
         Scanner s = new Scanner(System.in);
         System.out.println("Escolha o tipo de Assinatura desejado: \n1. Pré-Pago \n2. Pós-Pago");
@@ -71,10 +72,10 @@ public class Telefonia {
             System.out.println("\nOpção inválida.");
         }
     }
+
     
     
-      public void listarAssinantes() {
-    	
+    public void listarAssinantes() {
     	if (numPrePago == 0 && numPosPago ==0) {
     		
     		System.out.println(" \nERRO!! NÃO HÁ ASSINANTES CADASTRADOS!");
@@ -100,10 +101,14 @@ public class Telefonia {
     	        
     		
     	}
-    	public void fazerChamada() {
-
-
-         Scanner scanner = new Scanner(System.in);
+    	
+       
+    	
+    }
+    
+    
+    public void fazerChamada() {
+    	 Scanner scanner = new Scanner(System.in);
          System.out.println("\nDigite o tipo de assinante \n1 - Pré-pago  \n2 - Pós-pago:");
          int tipoAssinante = scanner.nextInt();
 
@@ -118,7 +123,7 @@ public class Telefonia {
 
                  System.out.println("\nDigite a data da chamada (formato: dia/mês/ano):");
                  String dataStr = scanner.next();
-
+                 
                  int dia = Integer.parseInt(dataStr.substring(0, 2));
                  int mes = Integer.parseInt(dataStr.substring(3, 5));
                  int ano = Integer.parseInt(dataStr.substring(6));
@@ -141,7 +146,7 @@ public class Telefonia {
                  int mes = Integer.parseInt(dataStr.substring(3, 5));
                  int ano = Integer.parseInt(dataStr.substring(6));
 
-
+                
                  GregorianCalendar data = new GregorianCalendar(ano, mes - 1, dia);
 
                  assinante.fazerChamada(data, duracao);
@@ -151,12 +156,11 @@ public class Telefonia {
          } else {
              System.out.println("\nOpção inválida. Tipo de assinante não reconhecido.");
          }
-
-      }
-       
+    	
+      } 
     	
     
-      public void fazerRecarga() {
+    public void fazerRecarga() {
     	Scanner s = new Scanner(System.in);
     	System.out.println("Escolha o tipo de Assinatura: \n1. Pré-Pago \n2. Pós-Pago ");
     	int tipoAssinante = s.nextInt();
@@ -184,12 +188,15 @@ public class Telefonia {
     			
     			System.out.println("\nERRO!! ASSINANTE PRÉ-PAGO NÃO ENCONTRADO! ");
     		}
+    		
     	
     	}
+    	
+    	
     }
     
-    
-      private PrePago localizarPrePago(long cpf) {
+   
+    private PrePago localizarPrePago(long cpf) {
         for (int i = 0; i < numPrePago; i++) {
             if (prePago[i].getCPF() == cpf) {
                 return prePago[i];
@@ -206,8 +213,8 @@ public class Telefonia {
         }
         return null; 
     }
-       
-       
+
+    
     public void imprimirFaturas() {
     	Scanner s = new Scanner(System.in);
     	
@@ -233,10 +240,11 @@ public class Telefonia {
     	} else {
     	    System.out.println("\nO índice fornecido está fora dos limites.");
     	}
-    
+    		
     }
-         
-        public static void main(String[] args) {
+   
+    
+    public static void main(String[] args) {
     	Telefonia tel = new Telefonia();
         Scanner s = new Scanner(System.in);
         int op = 0;
@@ -280,8 +288,4 @@ public class Telefonia {
 
         s.close();
     }
-}      
-          
-          
-    
 }
