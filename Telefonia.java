@@ -72,4 +72,39 @@ public class Telefonia {
         }
     }
     
+    
+      public void listarAssinantes() {
+    	
+    	if (numPrePago == 0 && numPosPago ==0) {
+    		
+    		System.out.println(" \nERRO!! NÃO HÁ ASSINANTES CADASTRADOS!");
+    		
+    	} else {
+    		
+    		
+    		 System.out.println("Buscando...");
+    	        System.out.println("\nAssinantes pré-pagos:");
+    	        for (int i = 0; i < numPrePago; i++) {
+    	      
+    	        System.out.println(prePago[i].toString());
+    	        System.out.println(prePago[i].getCPF());
+    	        	
+    	        }
+
+    	        System.out.println("\nAssinantes pós-pagos:");
+    	        for (int i = 0; i < numPosPago; i++) {
+    	        	
+    	        	System.out.println(posPago[i].toString());
+    	        	System.out.println(posPago[i].getCPF());
+    	        }
+    	        
+    		
+    	}
+    	
+       
+    	
+    }
+    
+    
+    
 }
