@@ -189,5 +189,25 @@ public class Telefonia {
     }
     
     
+      private PrePago localizarPrePago(long cpf) {
+        for (int i = 0; i < numPrePago; i++) {
+            if (prePago[i].getCPF() == cpf) {
+                return prePago[i];
+            }
+        }
+        return null; 
+    }
+
+    private PosPago localizarPosPago(long cpf) {
+        for (int i = 0; i < numPosPago; i++) {
+            if (posPago[i].getCPF() == cpf) {
+                return posPago[i];
+            }
+        }
+        return null; 
+    }
+       
+          
+          
     
 }
