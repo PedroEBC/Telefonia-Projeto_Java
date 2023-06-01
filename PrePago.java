@@ -74,6 +74,7 @@ public class PrePago extends Assinante {
         }
         System.out.println("Valor total da fatura: R$" + totalFatura);
 
-    }
+ }
+}
 
   
