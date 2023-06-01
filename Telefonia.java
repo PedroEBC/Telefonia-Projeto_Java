@@ -236,7 +236,51 @@ public class Telefonia {
     
     }
          
-          
+        public static void main(String[] args) {
+    	Telefonia tel = new Telefonia();
+        Scanner s = new Scanner(System.in);
+        int op = 0;
+
+        while (op != 6) {
+            System.out.println("----------Sistema De Telefonia----------");
+            System.out.println("\nEscolha uma das opções a seguir: ");
+            System.out.println("1-Cadastrar Assinantes");
+            System.out.println("2-Listar Assinantes");
+            System.out.println("3-Fazer Chamada");
+            System.out.println("4-Fazer Recarga");
+            System.out.println("5-Imprimir Faturas");
+            System.out.println("6-Sair do programa");
+            op = s.nextInt();
+            s.nextLine();
+
+            switch (op) {
+                case 1:
+                    tel.cadastrarAssinante();
+                    break;
+                case 2:
+                    tel.listarAssinantes();
+                    break;
+                case 3:
+                    tel.fazerChamada();
+                    break;
+                case 4:
+                    tel.fazerRecarga();
+                    break;
+                case 5:
+                    tel.imprimirFaturas();
+                    break;
+                case 6:
+                    System.out.println("Saindo do programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Escolha uma das opções válidas.");
+                    break;
+            }
+        }
+
+        s.close();
+    }
+}      
           
           
     
