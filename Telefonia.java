@@ -207,6 +207,36 @@ public class Telefonia {
         return null; 
     }
        
+       
+    public void imprimirFaturas() {
+    	Scanner s = new Scanner(System.in);
+    	
+    	System.out.print("Digite o mês das faturas a serem impressas: ");
+    	int mes = s.nextInt();
+    	
+    	int i = 0;
+    	
+    	if (i >= 0 && i < numPosPago) {
+    	    PosPago posPagoObj = posPago[i]; 
+    	    posPagoObj.imprimirFatura(mes);
+    	} else {
+    	    System.out.println("\nO índice fornecido está fora dos limites.");
+    	}
+         
+    	
+    	
+    	int j = 0;
+    	
+    	if (j >= 0 && j < numPrePago) {
+    	    PrePago posPagoObj = prePago[j]; 
+    	    posPagoObj.imprimirFatura(mes); 
+    	} else {
+    	    System.out.println("\nO índice fornecido está fora dos limites.");
+    	}
+    
+    }
+         
+          
           
           
     
