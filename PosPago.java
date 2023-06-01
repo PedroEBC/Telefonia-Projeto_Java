@@ -7,3 +7,15 @@ public class PosPago extends Assinante {
         super(cpf, nome, numero);
         this.assinatura = assinatura;
     }
+
+     public void fazerChamada(GregorianCalendar  data,  int  duracao) {
+    	if (numChamadas < chamadas.length){
+    		Chamada novaChamada = new Chamada(data, duracao);
+    		chamadas[numChamadas] = novaChamada;
+    		numChamadas++;
+    		System.out.println("\nChamada realizada com sucesso");
+    	}
+    	else {
+    		System.out.println("\nVoce não tem mais chamadas");
+    	}
+    }
