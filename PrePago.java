@@ -49,6 +49,31 @@ public class PrePago extends Assinante {
             System.out.println("Não é possível realizar mais recargas, limite alcançado.");
     	}
     }
- 
+ public void imprimirFatura (int mes) {
+        System.out.println("FATURA");
+        System.out.println("Dados:");
+        System.out.println("CPF: " + getCPF() + "\n" + toString());
+
+        System.out.println("Chamadas feitas no mês " + mes + ":");
+        for (int i = 0; i < numChamadas; i++) {
+            Chamada chamada = chamadas[i];
+            if (chamada.getData().get(GregorianCalendar.MONTH) + 1 == mes) {
+                System.out.println("Data: " + chamada.getData().getTime());
+                System.out.println("Duração: " + chamada.getDuracao() + " minutos");
+                double custoChamada = chamada.getDuracao() * 1.04; // Custo por minuto
+                System.out.println("Custo: R$" + custoChamada);
+            }
+        }
+
+        double totalFatura = assinatura;
+        for (int i = 0; i < numChamadas; i++) {
+            Chamada chamada = chamadas[i];
+            if (chamada.getData().get(GregorianCalendar.MONTH) + 1 == mes) {
+                totalFatura += chamada.getDuracao() * 1.04;
+            }
+        }
+        System.out.println("Valor total da fatura: R$" + totalFatura);
+
+    }
 
   
