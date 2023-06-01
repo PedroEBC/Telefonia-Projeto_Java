@@ -7,8 +7,8 @@ public class PosPago extends Assinante {
         super(cpf, nome, numero);
         this.assinatura = assinatura;
     }
-
-     public void fazerChamada(GregorianCalendar  data,  int  duracao) {
+    
+    public void fazerChamada(GregorianCalendar  data,  int  duracao) {
     	if (numChamadas < chamadas.length){
     		Chamada novaChamada = new Chamada(data, duracao);
     		chamadas[numChamadas] = novaChamada;
@@ -20,7 +20,7 @@ public class PosPago extends Assinante {
     	}
     }
 
-     public void imprimirFatura (int mes) {
+    public void imprimirFatura (int mes) {
     	System.out.println("\nFATURA");
     	System.out.println("\nDados:");
     	System.out.println("CPF: " + getCPF() + "\n" + toString());
