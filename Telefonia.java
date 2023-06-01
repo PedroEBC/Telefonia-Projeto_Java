@@ -156,6 +156,37 @@ public class Telefonia {
        
     	
     
+      public void fazerRecarga() {
+    	Scanner s = new Scanner(System.in);
+    	System.out.println("Escolha o tipo de Assinatura: \n1. Pré-Pago \n2. Pós-Pago ");
+    	int tipoAssinante = s.nextInt();
+    	
+    	if (tipoAssinante == 1) {
+    		System.out.println("Digite o CPF do assinante:");
+    		long cpf = s.nextLong();
+    		
+    		PrePago assinantePrePago = localizarPrePago(cpf);
+    		
+    		
+    		if (assinantePrePago != null && assinantePrePago.getCPF() == cpf) {
+    			System.out.println("Assinante pré-pago encontrado com sucesso!!! \n\n");
+    			System.out.println("Digite um mês: ");
+    			int mes = s.nextInt();
+    			
+    	        GregorianCalendar data = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), mes - 1, 1);
+
+    	        System.out.println("Digite um valor: ");
+    	        float valor = s.nextFloat();
+
+    	        assinantePrePago.recarregar(data, valor);
+    			
+    		} else {
+    			
+    			System.out.println("\nERRO!! ASSINANTE PRÉ-PAGO NÃO ENCONTRADO! ");
+    		}
+    	
+    	}
+    }
     
     
     
