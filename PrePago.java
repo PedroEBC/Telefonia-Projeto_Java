@@ -12,3 +12,28 @@ public class PrePago extends Assinante {
          this.creditos = 0.0f;
          this.recargas = new Recarga[5];
    }
+   
+   public float fazerChamada(GregorianCalendar data, int duracao) {
+	if (numChamadas < chamadas.length) {
+		if (creditos >= 1.45*duracao) {
+			Chamada novaChamada = new Chamada(data, duracao);
+    		chamadas[numChamadas] = novaChamada;
+    		
+    		numChamadas++;
+    		
+    		float creditoGasto = (float) (duracao*1.45);
+    		
+    		creditos = creditos - creditoGasto;
+    		
+		}
+		else {
+			
+		 System.out.println("Impossivel relizar chamada");
+		}
+	}
+	return duracao;
+	
+}
+
+
+  
