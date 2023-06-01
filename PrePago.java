@@ -35,5 +35,20 @@ public class PrePago extends Assinante {
 	
 }
 
+   public void recarregar(GregorianCalendar data, float valor) {
+    	if (numRecargas < recargas.length) {
+            
+    	 Recarga recarga = new Recarga(data, valor);
+    		recargas[numRecargas] = recarga;
+            numRecargas++;
+            creditos += valor;
+           
+            System.out.println("Recarga registrada com sucesso");
+        }
+    	else {
+            System.out.println("Não é possível realizar mais recargas, limite alcançado.");
+    	}
+    }
+ 
 
   
