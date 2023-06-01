@@ -220,6 +220,8 @@ public class Telefonia {
     	
     	System.out.print("Digite o mês das faturas a serem impressas: ");
     	int mes = s.nextInt();
+        
+        if (mes <= 12 ) {
     	
     	for (int i = 0; i < numPosPago; i++) {
             PosPago posPagoObj = posPago[i];
