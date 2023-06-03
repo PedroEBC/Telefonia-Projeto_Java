@@ -14,6 +14,7 @@ public class Telefonia {
         prePago = new PrePago[3];
         numPrePago = 0;
         posPago = new PosPago[3];
+        numPosPago = 0;
     }
     
       
@@ -181,11 +182,10 @@ public class Telefonia {
     
     public void fazerRecarga() {
     	Scanner s = new Scanner(System.in);
-    	System.out.println("Escolha o tipo de Assinatura: \n1. Pré-Pago \n2. Pós-Pago ");
-    	int tipoAssinante = s.nextInt();
+    	System.out.println("\n----RECARREGANDO ASSINANTE PRÉ-PAGO----\n");
     	
-    	if (tipoAssinante == 1) {
-    		System.out.println("Digite o CPF do assinante:");
+    	
+    		System.out.println("Digite o CPF do assinante pré-pago:");
     		long cpf = s.nextLong();
     		
     		PrePago assinantePrePago = localizarPrePago(cpf);
@@ -193,7 +193,7 @@ public class Telefonia {
     		
     		if (assinantePrePago != null && assinantePrePago.getCPF() == cpf) {
     			System.out.println("Assinante pré-pago encontrado com sucesso!!! \n\n");
-    			System.out.println("Digite um mês: ");
+    			System.out.println("Digite um mês  (Ex: mês 04 ): ");
     			int mes = s.nextInt();
     			
     	        GregorianCalendar data = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), mes - 1, 1);
@@ -208,10 +208,6 @@ public class Telefonia {
     			System.out.println("\nERRO!! ASSINANTE PRÉ-PAGO NÃO ENCONTRADO! ");
     		}
     		
-    	
-    	}
-    	
-    	
     }
     
    
