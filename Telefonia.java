@@ -1,4 +1,5 @@
 import java.util.GregorianCalendar;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -16,7 +17,10 @@ public class Telefonia {
     }
     
       
-    public void cadastrarAssinante() {
+    public void cadastrarAssinante() throws ParseException {
+        
+       try {
+           
         Scanner s = new Scanner(System.in);
         System.out.println("Escolha o tipo de Assinatura desejado: \n1. Pré-Pago \n2. Pós-Pago");
         int tipoAssinatura = s.nextInt();
@@ -69,8 +73,13 @@ public class Telefonia {
 
             System.out.println("\nAssinante pós-pago cadastrado com sucesso!.");
         } else {
-            System.out.println("\nOpção inválida.");
+           System.out.println("OPÇÃO INVALIDA. TENTE DE NOVO!.\n");
+            cadastrarAssinante();
         }
+           
+         } catch (java.util.InputMismatchException ex) {
+    	  System.out.println("\nDigite o formato correto!!\n(Numero: 976734668, CPF: 12345633789)\n\nVoltando ao menu...\n");
+      }
     }
 
     
@@ -84,19 +93,19 @@ public class Telefonia {
     		
     		
     		 System.out.println("Buscando...");
-    	        System.out.println("\nAssinantes pré-pagos:");
+    	       System.out.println("\n----ASSINANTES PRÉ-PAGOS----\n");
     	        for (int i = 0; i < numPrePago; i++) {
     	      
     	        System.out.println(prePago[i].toString());
-    	        System.out.println(prePago[i].getCPF());
+    	       System.out.println("CPF: " + prePago[i].getCPF() + "\n");
     	        	
     	        }
 
-    	        System.out.println("\nAssinantes pós-pagos:");
+    	        System.out.println("\n----ASSINANTES PÓS-PAGOS----\n");
     	        for (int i = 0; i < numPosPago; i++) {
     	        	
     	        	System.out.println(posPago[i].toString());
-    	        	System.out.println(posPago[i].getCPF());
+    	        	System.out.println("CPF: " + posPago[i].getCPF() + "\n");
     	        }
     	        
     		
@@ -107,7 +116,10 @@ public class Telefonia {
     }
     
     
-    public void fazerChamada() {
+    public void fazerChamada() throws ParseException {
+        
+        try {
+            
     	 Scanner scanner = new Scanner(System.in);
          System.out.println("\nDigite o tipo de assinante \n1 - Pré-pago  \n2 - Pós-pago:");
          int tipoAssinante = scanner.nextInt();
@@ -156,6 +168,13 @@ public class Telefonia {
          } else {
              System.out.println("\nOpção inválida. Tipo de assinante não reconhecido.");
          }
+            
+            } catch (java.util.InputMismatchException ex ) {
+    		
+    		System.out.println("ATENÇÃO! TIPO DDO DADO INVÁLIDO\n Tente de novo...\n");
+    		fazerChamada();
+         
+    	}
     	
       } 
     	
@@ -237,13 +256,14 @@ public class Telefonia {
       } else {
     	  
     	  System.out.println("\nDIGITE UM MÊS VALIDO!!!");
+          imprimirFaturas();
       }
     		
     		
     }
    
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
     	Telefonia tel = new Telefonia();
         Scanner s = new Scanner(System.in);
         int op = 0;
